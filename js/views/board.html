@@ -1,0 +1,27 @@
+	<div id="content">
+		<div class="container">
+			<div class="page-breadcrumbs-wrap">
+				<span class="page-breadcrumb">MSP &gt;</span>
+				<span class="page-breadcrumb">Board: {{ board_title }}</span>
+			</div>
+			<div class="mast-head">
+				<h2 class="page-subtitle">{{ board_title }}</h2>
+				<p class="page-desc">{{ board_desc }}</p>
+			</div>
+			<div class="discuss-feed clearfix">
+				<div class="grid-post" ng-repeat="project in projects track by $index">
+					<p class="grid-post-title">{{ project }}</p>
+					<p class="grid-post-details">{{ "Topics: " + projects.length || 0 }}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="popups" ng-controller="topicCtrl">
+		<div class="feed-post-create popup clearfix">
+			<h1 class="popup-title">Add Project</h1>
+			<input class="post-title" placeholder="Title"><br clear="all">
+			<textarea class="post-text" placeholder="Description"></textarea>
+			<a class="popup-close" href="javascript:void(0)" >&times;</a>
+			<a class="popup-submit" href="javascript:void(0);">Submit</a>
+		</div>
+	</div> -->

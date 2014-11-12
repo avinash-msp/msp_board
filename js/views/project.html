@@ -1,0 +1,47 @@
+	<div id="content">
+		<div class="container">
+			<div class="page-breadcrumbs-wrap">
+				<span class="page-breadcrumb">Board: {{ board_title }} &gt;</span>
+				<span class="page-breadcrumb">Project: {{ project_title }}</span>
+			</div>
+			<div class="mast-head">
+				<h2 class="page-subtitle">{{ project_title }}</h2>
+				<p class="page-desc">{{ project_desc }}<span ng-if="!project_desc" class="disabled">no description</span></p>
+				<a class="topic-create" href="javascript:void(0)" ng-click="showPopup('topic')">+ Add Topic</a>
+			</div>
+			<div class="discuss-feed">
+				<div class="feed-post" context="topic" ng-repeat="topic in topics track by $index">
+					<div class="feed-post-main">
+						<p class="post-title">{{ topic.title }}</p>
+						<p class="post-text">{{ topic.description }}<span ng-if="!topic.description" class="disabled">no description</span></p>
+						<!-- <div class="topic-tags-wrap clearfix">
+							<a class="topic-tags" href="javascript:void(0)" ng-repeat="tag in topic.tags track by $index">{{ tag }}</a>
+						</div> -->
+						<div class="topic-author">
+							<span class="section-label">By:&nbsp;</span><span class="section-content">{{ topic.username }}</span>
+						</div>
+						<p class="post-username"></p>
+						<div class="post-response">
+							<div class="btn-reponse">
+								<span class="icon-upvote {{ topic.upvotes.value }}"></span>
+								<span class="response-count">{{ topic.upvotes.count || 0 }}</span>
+							</div>
+							<div class="btn-reponse">
+								<span class="icon-comment {{ topic.comments.value }}"></span>
+								<span class="response-count">{{ topic.comments.count || 0 }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="popups" ng-show="popups.state">
+		<div class="feed-post-create popup clearfix" ng-show="(popups.context == 'topic')">
+			<h1 class="popup-title">Add Topic</h1>
+			<input class="post-title" placeholder="Title" ng-model="fresh.topic.title"><br clear="all">
+			<textarea class="post-text" placeholder="Description" ng-model="fresh.topic.description"></textarea>
+			<a class="popup-close" href="javascript:void(0)" ng-click="hidePopup('topic')">&times;</a>
+			<a class="popup-submit" href="javascript:void(0)" ng-click="addTopic()"/>Submit</a>
+		</div>
+	</div>

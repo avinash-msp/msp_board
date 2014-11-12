@@ -1,0 +1,66 @@
+<!Doctype html>
+<html lang="en" ng-app="mspBoard">
+<head>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="rootCtrl" >
+	<div class="header">
+		<div class="container">
+			<nav class="clearfix" role="navigation">
+				<ul>
+  					<li class="logo"><a href="#">MySmartBoard</a></li>
+	    			<!-- <li><a href="#">Projects</a></li> --><!-- class="active" -->
+	        		<li class="float-right dropdown">
+			          	<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.profile.name }}<span class="caret"></span></a>
+			          	<ul class="dropdown-menu" role="menu">
+			          		<li><a href="#">Settings</a></li>
+				            <li ng-click="user.login.revoke()">Logout</li> 
+			          	</ul>
+			        </li>
+			        <!-- <li class="float-right"><a href="#">Notifications</a></li>
+			        <li class="float-right"><a href="#">Activity</a></li> -->
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+
+	<div class="ng-view-wrap" ng-view=""></div>
+
+	<div class="login-wrap" ng-hide="user.login.status">
+		<div class="login">
+			<div class="section-content">
+				<h1 class="section-title">MSP Discussion Board</h1>
+				<p class="section-desc">Use Your mymartprice.com Email To Sign In</p>
+				<p class="section-error">{{ user.login.error }}</p>
+				<a href="javascript:void(0)" class="btn-login" ng-click="user.login.process()"></a>
+			</div>
+		</div>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+	<script>
+		Object.defineProperty(Object.prototype, "JSimport", {
+		  value : function(obj, keys){
+		    if(!keys){
+		      for(var key in obj){
+		        this[key] = obj[key];
+		      }
+		      return this;
+		    } else {
+		      for(var key in keys){
+		        this[key] = obj[key];
+		      }
+		      return this;
+		    }
+		  },
+		  "enumerable": false
+		});
+	</script>
+	<script src="js/app.js"></script>
+	<script src="js/app_ctrl.js"></script>
+	
+</body>
